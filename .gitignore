@@ -1,0 +1,12 @@
+.env
+node_modules/
+*.log
+# model outputs from eval runs
+eval/*_p*.py
+eval/*_h*.py
+eval/*.json.out
+eval/haiku*.json
+eval/sonnet*.json
+eval/qwen_timings.json
+eval/longctx_prompt.txt
+eval/longctx_answer.txt

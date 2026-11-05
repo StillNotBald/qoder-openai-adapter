@@ -1,0 +1,14 @@
+{
+  "name": "qoder-oai-shim",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Minimal OpenAI-compatible /v1/chat/completions endpoint backed by the official Qoder Agent SDK (tools off, single turn, warm daemon).",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env src/server.mjs"
+  },
+  "dependencies": {
+    "@qoder-ai/qoder-agent-sdk": "^1.0.58"
+  }
+}
