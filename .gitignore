@@ -10,3 +10,5 @@ eval/sonnet*.json
 eval/qwen_timings.json
 eval/longctx_prompt.txt
 eval/longctx_answer.txt
+eval/mhop_prompt.txt
+eval/mhop_answer.txt
