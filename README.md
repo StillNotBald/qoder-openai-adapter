@@ -57,6 +57,36 @@ OpenAI client config: base URL `http://127.0.0.1:8787/v1`, any api key (or the
 `SHIM_API_KEY` you set). `stream: true` is supported. `GET /v1/models` lists the
 Qoder model ids.
 
+## Integrate into your coding/QA agent
+
+Any OpenAI-compatible client works — just set the base URL and a key. No SDK
+changes, no Qoder app.
+
+**OpenAI Python SDK**
+```python
+from openai import OpenAI
+client = OpenAI(base_url="http://127.0.0.1:8787/v1", api_key="unused")  # or your SHIM_API_KEY
+r = client.chat.completions.create(model="qfmodel",
+    messages=[{"role": "user", "content": "review this diff for bugs ..."}])
+print(r.choices[0].message.content)
+```
+
+**OpenAI Node SDK**
+```js
+import OpenAI from "openai";
+const client = new OpenAI({ baseURL: "http://127.0.0.1:8787/v1", apiKey: "unused" });
+const r = await client.chat.completions.create({ model: "qfmodel",
+  messages: [{ role: "user", content: "review this diff for bugs ..." }] });
+```
+
+**Env-var style (LangChain, LlamaIndex, many agents)**
+```bash
+export OPENAI_BASE_URL=http://127.0.0.1:8787/v1
+export OPENAI_API_KEY=unused
+```
+
+A runnable, dependency-free QA example is in [`examples/agent_example.py`](examples/agent_example.py).
+
 ## Benchmark harness (`eval/`)
 
 A small grader to compare any OpenAI-compatible model on coding tasks with
